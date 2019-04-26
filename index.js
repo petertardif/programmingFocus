@@ -38,7 +38,8 @@ function getYouTubeVideos(query) {
     part: 'snippet',
     maxResults: 20,
     type: 'video',
-    videoCategoryId: '27'
+    videoCategoryId: '27'  // educational
+    // videoCategoryId: '28'  // tech and science
   };
   const youTubeQueryString = formatYouTubeQuery(parameters)
   const youTubeURL = youTubeSearchURL + '?' + youTubeQueryString;
