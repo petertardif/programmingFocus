@@ -1,1 +1,19 @@
+* {
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.search-button, input[type="text"] {
+    padding: 5px;
+}
+
+.search-button:hover {
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+}
