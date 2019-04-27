@@ -33,7 +33,7 @@ function displayYouTubeResults(responseJson) {
 */
 
 /*  // embed YouTube video (replace videoID) -- see origin info > try publishing to GitHub pages to see if this resolves console errors*
-<iframe width="560" height="315" src="https://www.youtube.com/embed/${video.id.videoId}&origin=https://example.com" frameborder="0" allow="accelerometer;  encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/${video.id.videoId?enablejsapi=1&origin=}https://example.com" frameborder="0" allow="accelerometer;  encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 */
 
 function getYouTubeVideos(query) {
