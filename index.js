@@ -1,7 +1,7 @@
 'use strict';
 
 // StackOverflow API:
-const stackOverflowSearchURL = 'https://api.stackexchange.com/docs/search';
+const stackOverflowSearchURL = 'https://api.stackexchange.com/2.2/search';
 
 function formatStackOverflowQuery(parameters){
   const queryItems = Object.keys(parameters)
@@ -11,13 +11,13 @@ function formatStackOverflowQuery(parameters){
 
 function displayStackOverflowResults(responseJson) {
   console.log(responseJson);
-  const stackOverflowResults = responseJson;  // edit this
+  const stackOverflowResults = responseJson.items; 
   // iterate through the items array
   const appendStackOverflowResults = stackOverflowResults.map(question => {
       return (
         `<li><h3>${question.title}</h3> 
-        <p>${question.excerpt}</p>
-        <a href="${question.url}" target="_blank">${question.url}</a>
+        <p>${question.body_markdown}</p>
+        <a href="${question.link}" target="_blank">${question.link}</a>
         </li>`
       );
   });
@@ -26,8 +26,10 @@ function displayStackOverflowResults(responseJson) {
 
 function getStackOverflowQuestions(query) {
   const parameters = {
-    locale: 'en-US',  // change these
-    q: query
+    filter: '!9Z(-wwK0y',  // filter for body content (description)
+    intitle: query,
+    site: 'stackoverflow',
+    sort: 'relevance'
   };
   const stackOverflowQueryString = formatStackOverflowQuery(parameters)
   const stackOverflowURL = stackOverflowSearchURL + '?' + stackOverflowQueryString;
@@ -107,8 +109,8 @@ function watchForm() {
     $('form').submit(event =>  {
         event.preventDefault();
         const codeSearchTerm = $('#js-code-search').val();
-        getMdnDocumentation(codeSearchTerm);
         getStackOverflowQuestions(codeSearchTerm);
+        getYouTubeVideos(codeSearchTerm);
     });
 }
 
