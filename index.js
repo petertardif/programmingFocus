@@ -14,32 +14,37 @@ function displayYouTubeResults(responseJson) {
   // if there are previous results, remove them
   console.log(responseJson);
   const youTubeResults = responseJson.items;
-//  $('#results-list').empty();
+  //  $('#results-list').empty();
   // iterate through the items array
   const appendYouTubeResults = youTubeResults.map(video => {
       return (
         `<li><h3>${video.snippet.title}</h3>
         <p>${video.snippet.description}</p>
-        <img src='${video.snippet.thumbnails.default.url}'>
+        <img src='${video.snippet.thumbnails.medium.url}'>
         </li>`
       );
   });
   $('#results-list').html(appendYouTubeResults);
 }
 
-/*  // embed YouTube video (replace videoID)
-<iframe width="560" height="315" src="https://www.youtube.com/embed/N4mEzFDjqtA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+/*  // embed YouTube video (replace videoID) -- see origin info > try publishing to GitHub pages to see if this resolves console errors*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/${video.id.videoId}&origin=https://example.com" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 */
 
 function getYouTubeVideos(query) {
   const parameters = {
     key: youTubeAPIKey,
-    q: query,
+    maxResults: 6,
+    order: 'Relevance',
     part: 'snippet',
-    maxResults: 20,
+    q: query,
+    relevanceLanguage: 'en',
+    safeSearch: 'strict',
     type: 'video',
-    videoCategoryId: '27'  // educational
-    // videoCategoryId: '28'  // tech and science
+    videoCategoryId: '27', // educational
+ // videoCategoryId: '28'  // tech and science -- maybe we can use this too and sort it
+    videoEmbeddable: true  
+
   };
   const youTubeQueryString = formatYouTubeQuery(parameters)
   const youTubeURL = youTubeSearchURL + '?' + youTubeQueryString;
@@ -58,7 +63,6 @@ function getYouTubeVideos(query) {
       $('#js-error-message').text(`Something went wrong: ${error.message}`);
     });
 }
-
 
 function watchForm() {
     console.log('watchForm ran');
