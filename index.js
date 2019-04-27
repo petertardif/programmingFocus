@@ -20,15 +20,20 @@ function displayYouTubeResults(responseJson) {
       return (
         `<li><h3>${video.snippet.title}</h3>
         <p>${video.snippet.description}</p>
-        <img src='${video.snippet.thumbnails.medium.url}'>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/${video.id.videoId}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </li>`
       );
   });
   $('#results-list').html(appendYouTubeResults);
 }
 
+/*
+  // snippet for thumbnail
+  <img src='${video.snippet.thumbnails.medium.url}'>
+*/
+
 /*  // embed YouTube video (replace videoID) -- see origin info > try publishing to GitHub pages to see if this resolves console errors*
-<iframe width="560" height="315" src="https://www.youtube.com/embed/${video.id.videoId}&origin=https://example.com" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/${video.id.videoId}&origin=https://example.com" frameborder="0" allow="accelerometer;  encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 */
 
 function getYouTubeVideos(query) {
