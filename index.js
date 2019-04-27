@@ -1,52 +1,53 @@
 'use strict';
 
-const mdnSearchURL = 'https://developer.mozilla.org/en-US/search.json';
+// StackOverflow API:
+const stackOverflowSearchURL = 'https://api.stackexchange.com/docs/search';
 
-function formatMdnQuery(parameters){
+function formatStackOverflowQuery(parameters){
   const queryItems = Object.keys(parameters)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(parameters[key])}`)
   return queryItems.join('&');
 }
 
-function displayMdnResults(responseJson) {
+function displayStackOverflowResults(responseJson) {
   console.log(responseJson);
-  const mdnResults = responseJson.documents;
+  const stackOverflowResults = responseJson;  // edit this
   // iterate through the items array
-  const appendMdnResults = mdnResults.map(document => {
+  const appendStackOverflowResults = stackOverflowResults.map(question => {
       return (
-        `<li><h3>${document.title}</h3>
-        <p>${document.excerpt}</p>
-        <a href="${document.url}" target="_blank">${document.url}</a>
+        `<li><h3>${question.title}</h3> 
+        <p>${question.excerpt}</p>
+        <a href="${question.url}" target="_blank">${question.url}</a>
         </li>`
       );
   });
-  $('#mdn-results-list').html(appendMdnResults);
+  $('#stackOverflow-results-list').html(appendStackOverflowResults);
 }
 
-function getMdnDocumentation(query) {
+function getStackOverflowQuestions(query) {
   const parameters = {
-    locale: 'en-US',
+    locale: 'en-US',  // change these
     q: query
   };
-  const mdnQueryString = formatMdnQuery(parameters)
-  const mdnURL = mdnSearchURL + '?' + mdnQueryString;
-  console.log(mdnURL);
+  const stackOverflowQueryString = formatStackOverflowQuery(parameters)
+  const stackOverflowURL = stackOverflowSearchURL + '?' + stackOverflowQueryString;
+  console.log(stackOverflowURL);
 
-  fetch(mdnURL)
+  fetch(stackOverflowURL)
     .then(response => {
       if (response.ok) {
         return response.json();
       }
       throw new Error(response.statusText);
     })
-    .then(responseJson => displayMdnResults(responseJson))
+    .then(responseJson => displayStackOverflowResults(responseJson))
     .catch(error => {
       $('#js-error-message').text(`Something went wrong: ${error.message}`);
     });
 }
 
-
-const youTubeAPIKey = 'AIzaSyDxEA4w7rd0YACNoOzUeSK3YaI_UON9zjw';
+// youTube API:
+const youTubeAPIKey = 'AIzaSyDxEA4w7rd0YACNoOzUeSK3YaI_UON9zjw';  // note: we understand this should not be here, but in order for the app to function...
 const youTubeSearchURL = 'https://www.googleapis.com/youtube/v3/search';
 
 function formatYouTubeQuery(parameters) {
@@ -86,7 +87,7 @@ function getYouTubeVideos(query) {
   };
   const youTubeQueryString = formatYouTubeQuery(parameters)
   const youTubeURL = youTubeSearchURL + '?' + youTubeQueryString;
-  // console.log(youTubeURL);
+  console.log(youTubeURL);
 
   fetch(youTubeURL)
     .then(response => {
@@ -107,7 +108,7 @@ function watchForm() {
         event.preventDefault();
         const codeSearchTerm = $('#js-code-search').val();
         getMdnDocumentation(codeSearchTerm);
-        getYouTubeVideos(codeSearchTerm);
+        getStackOverflowQuestions(codeSearchTerm);
     });
 }
 
