@@ -12,16 +12,31 @@ function formatStackOverflowQuery(parameters){
 function displayStackOverflowResults(responseJson) {
   console.log(responseJson);
   const stackOverflowResults = responseJson.items; 
+  let max = 10;  // limiting search results to 10 if there are more than 10
   // iterate through the items array
-  const appendStackOverflowResults = stackOverflowResults.map(question => {
-      return (
-        `<li><h3>${question.title}</h3> 
-        <p>${question.body_markdown}</p>
-        <a href="${question.link}" target="_blank">${question.link}</a>
-        </li>`
-      );
-  });
-  $('#stackOverflow-results-list').html(appendStackOverflowResults);
+  let appendStackOverflowResults = ``;
+  if (stackOverflowResults.length > max) {
+    for (let i = 0; i < max; i++) {
+      appendStackOverflowResults += 
+        `<li><h3>${stackOverflowResults[i].title}</h3> 
+        <p>${stackOverflowResults[i].body_markdown}</p>
+        <a href="${stackOverflowResults[i].link}" target="_blank">${stackOverflowResults[i].link}</a>
+        </li>`;
+      // return appendStackOverflowResults;
+    }
+    $('#stackOverflow-results-list').html(appendStackOverflowResults);
+  } 
+    else {
+      const appendStackOverflowResults = stackOverflowResults.map(question => {
+        return (
+          `<li><h3>${question.title}</h3> 
+          <p>${question.body_markdown}</p>
+          <a href="${question.link}" target="_blank">${question.link}</a>
+          </li>`
+        );
+    });
+    $('#stackOverflow-results-list').html(appendStackOverflowResults);
+  }
 }
 
 function getStackOverflowQuestions(query) {
