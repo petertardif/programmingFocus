@@ -46,7 +46,7 @@ function getStackOverflowQuestions(query) {
     site: 'stackoverflow',
     sort: 'relevance'
   };
-  const stackOverflowQueryString = formatStackOverflowQuery(parameters)
+  const stackOverflowQueryString = formatStackOverflowQuery(parameters);
   const stackOverflowURL = stackOverflowSearchURL + '?' + stackOverflowQueryString;
   console.log(stackOverflowURL);
 
@@ -102,7 +102,7 @@ function getYouTubeVideos(query) {
  // videoCategoryId: '28'  // tech and science -- maybe we can use this too and sort it
     videoEmbeddable: true  
   };
-  const youTubeQueryString = formatYouTubeQuery(parameters)
+  const youTubeQueryString = formatYouTubeQuery(parameters);
   const youTubeURL = youTubeSearchURL + '?' + youTubeQueryString;
   console.log(youTubeURL);
 
