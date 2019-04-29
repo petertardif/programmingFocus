@@ -1,5 +1,52 @@
 'use strict';
 
+// mdn search (very basic keyword search)
+const mdnSearchURL = 'https://cors-anywhere.herokuapp.com/https://developer.mozilla.org/en-US/search.json';
+// proxy server to bypass CORB error, we understand this would not be done in a production environment
+
+function formatMdnQuery(parameters) {
+    const queryItems = Object.keys(parameters)
+      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(parameters[key])}`)
+    return queryItems.join('&');
+  }
+
+function displayMdnResults(responseJson) {
+  console.log(responseJson);
+  const mdnResults = responseJson.documents;
+  // iterate through the items array
+  const appendMdnResults = mdnResults.map(document => {
+      return (
+        `<li><h3>${document.title}</h3>
+        <p>${document.excerpt}</p>
+	<a href="${document.url}">${document.url}</a>
+        </li>`
+      );
+  });
+  $('#mdn-results-list').html(appendMdnResults);	// add the <ul> with this ID to the HTML
+}
+
+function getMdnDocuments(query) {
+  const parameters = {
+    locale: 'en-US',
+    q: query
+  };
+  const mdnQueryString = formatMdnQuery(parameters);	
+  const mdnURL = mdnSearchURL + '?' + mdnQueryString;
+  console.log(mdnURL);
+
+  fetch(mdnURL)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+    .then(responseJson => displayMdnResults(responseJson))
+    .catch(error => {
+      $('#js-error-message').text(`Something went wrong: ${error.message}`);
+    });
+}
+
 // StackOverflow API:
 const stackOverflowSearchURL = 'https://api.stackexchange.com/2.2/search';
 
@@ -110,6 +157,7 @@ function watchForm() {
     $('form').submit(event =>  {
         event.preventDefault();
         const codeSearchTerm = $('#js-code-search').val();
+        getMdnDocuments(codeSearchTerm);
         getStackOverflowQuestions(codeSearchTerm);
         getYouTubeVideos(codeSearchTerm);
     });
