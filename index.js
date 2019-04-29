@@ -16,7 +16,7 @@ function displayStackOverflowResults(responseJson) {
   const appendStackOverflowResults = stackOverflowResults.map(question => {
       return (
         `<li><h3>${question.title}</h3> 
-        <p>${question.body_markdown}</p>
+        ${question.body}
         <a href="${question.link}" target="_blank">${question.link}</a>
         </li>`
       );
@@ -26,12 +26,13 @@ function displayStackOverflowResults(responseJson) {
 
 function getStackOverflowQuestions(query) {
   const parameters = {
-    filter: '!9Z(-wwK0y',  // filter for body content (description)
+    filter: '!-*jbN-lBOF)v',  // filter for body content (description) and page and page_size
     intitle: query,
     site: 'stackoverflow',
+    pagesize: 10,
     sort: 'relevance'
   };
-  const stackOverflowQueryString = formatStackOverflowQuery(parameters)
+  const stackOverflowQueryString = formatStackOverflowQuery(parameters);
   const stackOverflowURL = stackOverflowSearchURL + '?' + stackOverflowQueryString;
   console.log(stackOverflowURL);
 
@@ -87,7 +88,7 @@ function getYouTubeVideos(query) {
  // videoCategoryId: '28'  // tech and science -- maybe we can use this too and sort it
     videoEmbeddable: true  
   };
-  const youTubeQueryString = formatYouTubeQuery(parameters)
+  const youTubeQueryString = formatYouTubeQuery(parameters);
   const youTubeURL = youTubeSearchURL + '?' + youTubeQueryString;
   console.log(youTubeURL);
 
