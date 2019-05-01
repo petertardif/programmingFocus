@@ -11,17 +11,25 @@ function formatStackOverflowQuery(parameters){
 
 function displayStackOverflowResults(responseJson) {
   console.log(responseJson);
+  $('#stackOverflow-results-list').empty();
   const stackOverflowResults = responseJson.items; 
   // iterate through the items array
-  const appendStackOverflowResults = stackOverflowResults.map(question => {
-      return (
-        `<li><h3>${question.title}</h3> 
-        ${question.body}
-        <a href="${question.link}" target="_blank">${question.link}</a>
-        </li>`
-      );
-  });
-  $('#stackOverflow-results-list').html(appendStackOverflowResults);
+  let noStackOverflowResults = '';
+  if (!stackOverflowResults.length) {  // if the array length is 0 (false)
+    noStackOverflowResults = `<h3>Stack Overflow returned no results. Try using different keywords or visit: 
+    <a href="https://stackoverflow.com" target="_blank">https://stackoverflow.com</a></h3>`;
+    $('#stackOverflow-results-list').html(noStackOverflowResults);
+  } else {
+      const appendStackOverflowResults = stackOverflowResults.map(question => {
+        return (
+          `<li><h3>${question.title}</h3> 
+          ${question.body}
+          <a href="${question.link}" target="_blank">${question.link}</a>
+          </li>`
+        );
+    });
+    $('#stackOverflow-results-list').html(appendStackOverflowResults);
+  }
 }
 
 function getStackOverflowQuestions(query) {
@@ -61,6 +69,7 @@ function formatYouTubeQuery(parameters) {
 
 function displayYouTubeResults(responseJson) {
   console.log(responseJson);
+  $('#youtube-results-list').empty();
   const youTubeResults = responseJson.items;
   // iterate through the items array
   const appendYouTubeResults = youTubeResults.map(video => {
@@ -112,6 +121,7 @@ function watchForm() {
         const codeSearchTerm = $('#js-code-search').val();
         getStackOverflowQuestions(codeSearchTerm);
         getYouTubeVideos(codeSearchTerm);
+        $('#js-code-search').val(''); // empty user's search input
     });
 }
 
