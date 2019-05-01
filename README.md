@@ -1,9 +1,8 @@
 # codeSearchAPIHack
-* An app for students to enter misunderstood coding concepts that returns documentation, videos from YouTube, and/or answers from Stack Overflow to explain that concept.
+https://thinkful-nights-weekends-codename-camel.github.io/programmingFocus/
 
-* APIs to use:
-YouTube - https://www.programmableweb.com/api/youtube
-Stack Overflow - https://api.stackexchange.com/docs
+* An app for programming students to search for programming or code-related questions that return relevant questions from StackOverflow and educational videos from YouTube depending on the keywords used.
 
-* Additional source:
-MDN - https://developer.mozilla.org/en-US/docs/MDN/Contribute/Tools/Search
+* APIs used:
+** YouTube - https://www.programmableweb.com/api/youtube
+** Stack Overflow - https://api.stackexchange.com/docs
