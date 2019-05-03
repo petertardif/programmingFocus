@@ -3,11 +3,45 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
 }
 
-.search-button, input[type="text"] {
+.app-title {
+    font-family: 'Roboto Slab', serif;
+}
+
+header {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+}
+
+form {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 20px;
+}
+
+input.input-box-size {
+    font-size: 1em;
+    height: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     padding: 5px;
+    width: 100%;
+}
+
+input.search-button {
+    background-color: green;
+    border: solid grey 0px;
+    color: white;
+    border-radius: 3px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1em;
+    height: 40px;
+    padding: 5px;
+    width: 200px;
 }
 
 .search-button:hover {
@@ -16,4 +50,25 @@ body {
 
 .error-message {
     color: red;
+}
+
+.results-container {
+    display: flex;
+    justify-content: space-around;
+    /* align-items: space-around; */
+    flex-wrap: wrap;
+    padding: 0 20px; 
+}
+
+.stackoverflow-results,
+.youtube-results {
+    max-width: 700px;
+}
+
+li {
+    list-style: none;
+}
+
+.js-hide {
+    display: none;
 }

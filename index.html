@@ -5,25 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Code Search</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.css">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Programming Focus</h1>
-    <h2>We search Stack Overflow and portions of YouTube to bring you helpful results to aid your programming journey. We do our best to provide focused search results. If the results are not what you are looking for, we recommend trying different keywords.</h2>
+    <header role="banner">
+        <h1 class="app-title">Programming Focus</h1>
+        <h2>We provide focused search results from Stack Overflow and portions of YouTube to aid your programming journey.  If your results are lacking, please use different keywords.</h2>
+    </header>
     <form action="" id="js-form">
-        <label for="code-search">Enter a programming language or concept</label>
-        <input type="text" name="code-search" id="js-code-search" required>
-
+        <label for="code-search">Enter a programming language or concept:</label>
+        <input class="input-box-size" type="text" name="code-search" id="js-code-search" placeholder="for loop" required>
         <input class="search-button" type="submit" value="Search!">
     </form>
     
     <p id="js-error-message" class="error-message"></p>
-    <section aria-label="results">
-        <h2>Search Results</h2>
-        <ul id="stackOverflow-results-list">
-        </ul>
-        <ul id="youtube-results-list">
-        </ul>
+    <section class="results-container" aria-label="results">
+        <div class="stackoverflow-results">
+            <h2 class="js-hide"><i class="fab fa-stack-overflow"></i> Stack Overflow:</h2>
+            <ul id="stackOverflow-results-list">
+            </ul>
+        </div>
+
+        <div class="youtube-results">
+            <h2 class="js-hide"><i class="fab fa-youtube"></i> YouTube:</h2>
+            <ul id="youtube-results-list">
+            </ul>
+        </div>
     </section>
 
     <script

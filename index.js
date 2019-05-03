@@ -122,6 +122,7 @@ function watchForm() {
         getStackOverflowQuestions(codeSearchTerm);
         getYouTubeVideos(codeSearchTerm);
         $('#js-code-search').val(''); // empty user's search input
+        $('.js-hide').removeClass('js-hide');
     });
 }
 
