@@ -72,3 +72,9 @@ li {
 .js-hide {
     display: none;
 }
+
+.hide-body,
+.markdown-hide,
+.button-hide {
+    display: none;
+}

@@ -22,14 +22,47 @@ function displayStackOverflowResults(responseJson) {
   } else {
       const appendStackOverflowResults = stackOverflowResults.map(question => {
         return (
-          `<li><h3>${question.title}</h3> 
-          <p>${question.body_markdown.length > 200 ? question.body_markdown.substring(0, 200) + '...' : question.body_markdown}</p>
+          `<li><h3>${question.title}</h3>
+          <button class="see-more">See more</button>
+          <div class="body hide-body">
+           ${question.body}
+          <button class="see-less">See less</button>
+          </div>
+          <p class="body-markdown">${question.body_markdown.length > 200 ? question.body_markdown.substring(0, 200) + '...' : question.body_markdown}</p>
           <a href="${question.link}" target="_blank">${question.link}</a>
           </li>`
         );
     });
     $('#stackOverflow-results-list').html(appendStackOverflowResults);
   }
+}
+
+function stackOverflowClickMore() {
+  $('#stackOverflow-results-list').on('click', '.see-more', function(event) {
+    event.preventDefault;
+    console.log('stackOverflow click more ran');
+    showDetails();
+  });
+}
+
+function stackOverflowClickLess() {
+  $('#stackOverflow-results-list').on('click', '.see-less', function(event) {
+    event.preventDefault;
+    console.log('stackOverflow click less ran');
+    hideDetails();
+  });
+}
+
+function showDetails() {
+  $('.body').removeClass('hide-body');
+  $('.body-markdown').addClass('markdown-hide');
+  $('.see-more').addClass('button-hide');
+}
+
+function hideDetails() {
+  $('.body').addClass('hide-body');
+  $('.body-markdown').removeClass('markdown-hide');
+  $('.see-more').removeClass('button-hide');
 }
 
 function getStackOverflowQuestions(query) {
@@ -126,4 +159,10 @@ function watchForm() {
     });
 }
 
-$(watchForm);
+function domReady() {
+  watchForm();
+  stackOverflowClickMore();
+  stackOverflowClickLess();
+}
+
+$(domReady);
