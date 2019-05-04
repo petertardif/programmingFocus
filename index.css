@@ -78,3 +78,17 @@ li {
 .button-hide {
     display: none;
 }
+
+.see-more,
+.see-less {
+    padding: 5px;
+}
+
+.see-more:hover,
+.see-less:hover {
+    cursor: pointer;
+}
+
+.see-less {
+    margin-bottom: 15px;
+}

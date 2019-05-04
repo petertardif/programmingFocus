@@ -26,7 +26,7 @@ function displayStackOverflowResults(responseJson) {
           <button class="see-more">See more</button>
           <div class="body hide-body">
            ${question.body}
-          <button class="see-less">See less</button>
+            <button class="see-less">See less</button>
           </div>
           <p class="body-markdown">${question.body_markdown.length > 200 ? question.body_markdown.substring(0, 200) + '...' : question.body_markdown}</p>
           <a href="${question.link}" target="_blank">${question.link}</a>
@@ -40,16 +40,18 @@ function displayStackOverflowResults(responseJson) {
 function stackOverflowClickMore() {
   $('#stackOverflow-results-list').on('click', '.see-more', function(event) {
     event.preventDefault;
+    let targetClicked = $(this).find('button');
     console.log('stackOverflow click more ran');
-    showDetails();
+    showDetails(targetClicked);
   });
 }
 
 function stackOverflowClickLess() {
   $('#stackOverflow-results-list').on('click', '.see-less', function(event) {
     event.preventDefault;
+    let targetClicked = $(this).find('button');
     console.log('stackOverflow click less ran');
-    hideDetails();
+    hideDetails(targetClicked);
   });
 }
 
