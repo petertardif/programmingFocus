@@ -109,6 +109,7 @@ input.search-button:hover {
 li {
     list-style: none;
     padding-bottom: 20px;
+    padding-right: 10px;
 }
 
 a {
@@ -145,6 +146,7 @@ pre {
     border: 1px solid var(--stack-overflow-color);
     border-radius: 3px;
     color: var(--search-button-font-color);
+    font-family: 'Roboto Slab', serif;
     padding: 5px;
     margin-bottom: 15px;
 }
@@ -156,4 +158,82 @@ pre {
     border-radius: 3px;
     color: var(-result-background-color);
     cursor: pointer;
+}
+
+.fa-search {
+    color: var(--search-button-color);
+}
+
+@media screen and (min-width: 320px) and (max-width: 400px) {
+    .app-title {
+        font-size: 180%;
+    }
+
+    .app-detail {
+        font-size: 120%;
+    }
+
+   .stackoverflow-results,
+   .youtube-results {
+        max-width: 90%;
+        padding: 10px;
+    }
+
+    .stackoverflow-results > h2,
+    .youtube-results > h2{
+        margin-top: 10px;
+    }
+
+    .stackoverflow-results > ul,
+    .youtube-results > ul {
+        padding-left: 20px;
+    }
+
+    .iframe-embed {
+        height: 180px;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 600px) {
+    .app-title {
+        font-size: 180%;
+    }
+
+    .app-detail {
+        font-size: 120%;
+    }
+
+   .stackoverflow-results,
+   .youtube-results {
+        max-width: 90%;
+        padding: 10px;
+    }
+
+    .stackoverflow-results > h2,
+    .youtube-results > h2{
+        margin-top: 10px;
+    }
+
+    .stackoverflow-results > ul,
+    .youtube-results > ul {
+        padding-left: 20px;
+    }
+
+    .iframe-embed {
+        height: 250px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
+    .stackoverflow-results,
+    .youtube-results {
+         max-width: 90%;
+         padding: 10px;
+     }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .iframe-embed {
+        height: 180px;
+    }
 }
