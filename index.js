@@ -22,14 +22,39 @@ function displayStackOverflowResults(responseJson) {
   } else {
       const appendStackOverflowResults = stackOverflowResults.map(question => {
         return (
-          `<li><h3>${question.title}</h3> 
-          <p>${question.body_markdown.length > 200 ? question.body_markdown.substring(0, 200) + '...' : question.body_markdown}</p>
+          `<li><h3>${question.title}</h3>
+          <p class="body-markdown">${question.body_markdown.length > 200 ? question.body_markdown.substring(0, 200) + '...' : question.body_markdown}</p>
+          <button class="see-more">See detail</button>
+          <div class="body hide-body">
+           ${question.body}
+            <button class="see-less">See less</button>
+          </div>
           <a href="${question.link}" target="_blank">${question.link}</a>
           </li>`
         );
     });
     $('#stackOverflow-results-list').html(appendStackOverflowResults);
   }
+}
+
+function stackOverflowClickMore() {
+  $('#stackOverflow-results-list').on('click', '.see-more', function(event) {
+    let parentLi = $(this).closest('li');   // goes up to find closest <li>
+    // console.log('stackOverflow click more ran');
+    parentLi.find('.body').removeClass('hide-body');    // finds body, displays it
+    parentLi.find('.body-markdown').addClass('markdown-hide');    // hides truncated
+    $(this).addClass('button-hide');  // hides button that was clicked
+  });
+}
+
+function stackOverflowClickLess() {
+  $('#stackOverflow-results-list').on('click', '.see-less', function(event) {
+    let parentLi = $(this).closest('li');
+    // console.log('stackOverflow click less ran');
+    parentLi.find('.body').addClass('hide-body');
+    parentLi.find('.body-markdown').removeClass('markdown-hide');
+    parentLi.find('.see-more').removeClass('button-hide');
+  });
 }
 
 function getStackOverflowQuestions(query) {
@@ -94,7 +119,7 @@ function getYouTubeVideos(query) {
     safeSearch: 'strict',
     type: 'video',
     videoCategoryId: '27', // educational
- // videoCategoryId: '28'  // tech and science -- maybe we can use this too and sort it
+ // videoCategoryId: '28'  // tech and science -- currently unused
     videoEmbeddable: true  
   };
   const youTubeQueryString = formatYouTubeQuery(parameters);
@@ -126,4 +151,10 @@ function watchForm() {
     });
 }
 
-$(watchForm);
+function domReady() {
+  watchForm();
+  stackOverflowClickMore();
+  stackOverflowClickLess();
+}
+
+$(domReady);
