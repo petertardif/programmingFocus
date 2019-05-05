@@ -16,7 +16,7 @@ function displayStackOverflowResults(responseJson) {
   // iterate through the items array
   let noStackOverflowResults = '';
   if (!stackOverflowResults.length) {  // if the array length is 0 (false)
-    noStackOverflowResults = `<h3>Stack Overflow returned no results. Try using different keywords or visit: 
+    noStackOverflowResults = `<h3 class="no-stack-overflow-results">Stack Overflow returned no results. Try using different keywords or visit: 
     <a href="https://stackoverflow.com" target="_blank">https://stackoverflow.com</a></h3>`;
     $('#stackOverflow-results-list').html(noStackOverflowResults);
   } else {
@@ -148,13 +148,28 @@ function watchForm() {
         getYouTubeVideos(codeSearchTerm);
         $('#js-code-search').val(''); // empty user's search input
         $('.js-hide').removeClass('js-hide');
+        $('.error-message').html('');
     });
+}
+
+function upToSearchPress() {
+  $('.search-top').on('click', function(event) {
+    event.preventDefault();
+    let targetHref = $(this).attr('href');
+    searchPressScroll(targetHref);
+  });
+}
+
+function searchPressScroll(destination) {
+  $('html, body').animate({
+    scrollTop: $(destination).offset().top }, 300);
 }
 
 function domReady() {
   watchForm();
   stackOverflowClickMore();
   stackOverflowClickLess();
+  upToSearchPress();
 }
 
 $(domReady);

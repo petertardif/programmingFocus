@@ -16,8 +16,8 @@
         <h2 class="app-detail">We provide focused search results from Stack Overflow and portions of YouTube to aid your programming journey.  If your results are lacking, please use different keywords.</h2>
     </header>
     <form action="" id="js-form">
-        <label for="code-search">Enter a programming language or concept:</label>
-        <input class="input-box-size" type="text" name="code-search" id="js-code-search" placeholder="for loop" required>
+        <label id="js-code-search" for="code-search">Enter a programming language or concept:</label>
+        <input class="input-box-size" type="text" name="code-search"  placeholder="for loop" required>
         <input class="search-button" type="submit" value="Search">
     </form>
     
@@ -34,8 +34,10 @@
             <ul id="youtube-results-list">
             </ul>
         </div>
+    </section>
 
-        <button><i class="fas fa-search"></i> Back up to Search</button>
+    <section class="js-hide" aria-label="back up to search">
+        <a class="search-top" href="#js-code-search"><i class="fas fa-search"></i> Back up to Search</a>
     </section>
 
     <script
