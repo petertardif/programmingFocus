@@ -101,7 +101,7 @@ function displayYouTubeResults(responseJson) {
       return (
         `<li><h3>${video.snippet.title}</h3>
         <p>${video.snippet.description}</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/${video.id.videoId}?enablejsapi=1&origin=https://thinkful-nights-weekends-codename-camel.github.io/programmingFocus/" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="iframe-embed" src="https://www.youtube.com/embed/${video.id.videoId}?enablejsapi=1&origin=https://thinkful-nights-weekends-codename-camel.github.io/programmingFocus/" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </li>`
       );
   });
