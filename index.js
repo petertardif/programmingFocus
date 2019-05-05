@@ -23,12 +23,12 @@ function displayStackOverflowResults(responseJson) {
       const appendStackOverflowResults = stackOverflowResults.map(question => {
         return (
           `<li><h3>${question.title}</h3>
+          <p class="body-markdown">${question.body_markdown.length > 200 ? question.body_markdown.substring(0, 200) + '...' : question.body_markdown}</p>
           <button class="see-more">See more</button>
           <div class="body hide-body">
            ${question.body}
             <button class="see-less">See less</button>
           </div>
-          <p class="body-markdown">${question.body_markdown.length > 200 ? question.body_markdown.substring(0, 200) + '...' : question.body_markdown}</p>
           <a href="${question.link}" target="_blank">${question.link}</a>
           </li>`
         );
@@ -39,32 +39,22 @@ function displayStackOverflowResults(responseJson) {
 
 function stackOverflowClickMore() {
   $('#stackOverflow-results-list').on('click', '.see-more', function(event) {
-    event.preventDefault;
-    let targetClicked = $(this).find('button');
+    let parentLi = $(this).closest('li');   // goes up to find closest <li>
     console.log('stackOverflow click more ran');
-    showDetails(targetClicked);
+    parentLi.find('.body').removeClass('hide-body');    // finds body, displays it
+    parentLi.find('.body-markdown').addClass('markdown-hide');    // hides truncated
+    $(this).addClass('button-hide');  // hides button that was clicked
   });
 }
 
 function stackOverflowClickLess() {
   $('#stackOverflow-results-list').on('click', '.see-less', function(event) {
-    event.preventDefault;
-    let targetClicked = $(this).find('button');
+    let parentLi = $(this).closest('li');
     console.log('stackOverflow click less ran');
-    hideDetails(targetClicked);
+    parentLi.find('.body').addClass('hide-body');
+    parentLi.find('.body-markdown').removeClass('markdown-hide');
+    parentLi.find('.see-more').removeClass('button-hide');
   });
-}
-
-function showDetails() {
-  $('.body').removeClass('hide-body');
-  $('.body-markdown').addClass('markdown-hide');
-  $('.see-more').addClass('button-hide');
-}
-
-function hideDetails() {
-  $('.body').addClass('hide-body');
-  $('.body-markdown').removeClass('markdown-hide');
-  $('.see-more').removeClass('button-hide');
 }
 
 function getStackOverflowQuestions(query) {

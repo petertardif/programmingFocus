@@ -69,6 +69,10 @@ li {
     list-style: none;
 }
 
+a {
+    display: block;
+}
+
 .js-hide {
     display: none;
 }
@@ -82,13 +86,10 @@ li {
 .see-more,
 .see-less {
     padding: 5px;
+    margin-bottom: 15px;
 }
 
 .see-more:hover,
 .see-less:hover {
     cursor: pointer;
-}
-
-.see-less {
-    margin-bottom: 15px;
 }
