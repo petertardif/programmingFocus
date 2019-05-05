@@ -2,13 +2,29 @@
     box-sizing: border-box;
 }
 
+:root {
+    --body-background-color: rgb(248, 248, 246);
+    --error-color: rgb(238, 0, 0);
+    --link-hover-color: rgb(1, 67, 209);
+    --result-border-color: rgb(135, 142, 150);
+    --result-background-color: rgb(255, 255, 255); 
+    --search-button-color: rgb(16, 139, 0);
+    --search-button-hover-color: rgb(16, 139, 0, 0.75);
+    --search-button-font-color: rgb(236, 245, 255);
+    --stack-overflow-color: rgb(244, 128, 36);
+    --stack-overfolow-hover-color: rgb(244, 128, 36, 0.75);
+    --youtube-color: rgb(255, 0, 0);
+}
+
 body {
+    background-color: var(--body-background-color);
     font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
 }
 
 .app-title {
     font-family: 'Roboto Slab', serif;
+    margin-top: 40px;
 }
 
 header {
@@ -33,10 +49,10 @@ input.input-box-size {
 }
 
 input.search-button {
-    background-color: green;
-    border: solid grey 0px;
+    background-color: var(--search-button-color);
+    border: 1px solid var(--search-button-color);
     border-radius: 3px;
-    color: white;
+    color: var(--search-button-font-color);
     display: block;
     font-family: 'Roboto Slab', serif;
     font-size: 1em;
@@ -46,12 +62,15 @@ input.search-button {
     width: 200px;
 }
 
-.search-button:hover {
+input.search-button:hover {
+    background-color: var(--search-button-hover-color);
+    border: 1px solid var(--search-button-hover-color);
+    color: var(-result-background-color);
     cursor: pointer;
 }
 
 .error-message {
-    color: red;
+    color: var(--error-color);
 }
 
 .results-container {
@@ -59,14 +78,27 @@ input.search-button {
     justify-content: space-around;
     /* align-items: space-around; */
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     max-width: 1200px;
 }
 
 .stackoverflow-results,
 .youtube-results {
-    max-width: 50%;
+    background-color: var(--result-background-color);
+    border: 1px solid var(--result-border-color);
+    border-radius: 5px;
+    margin: 10px;
+    max-width: 45%;
     padding: 0 20px;
+    overflow-wrap: break-word;
+}
+
+.fa-stack-overflow {
+    color: var(--stack-overflow-color);
+}
+
+.fa-youtube {
+    color: var(--youtube-color);
 }
 
 .iframe-embed {
@@ -76,12 +108,25 @@ input.search-button {
 
 li {
     list-style: none;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 a {
+    color: var(--link-hover-color);
     display: block;
     word-wrap: break-word;
+}
+
+a:hover {
+    color: var(--stack-overflow-color);
+}
+
+pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
 .js-hide {
@@ -96,11 +141,19 @@ a {
 
 .see-more,
 .see-less {
+    background-color: var(--stack-overflow-color);
+    border: 1px solid var(--stack-overflow-color);
+    border-radius: 3px;
+    color: var(--search-button-font-color);
     padding: 5px;
     margin-bottom: 15px;
 }
 
 .see-more:hover,
 .see-less:hover {
+    background-color: var(--stack-overfolow-hover-color);
+    border: 1px solid var(--stack-overfolow-hover-color);
+    border-radius: 3px;
+    color: var(-result-background-color);
     cursor: pointer;
 }
