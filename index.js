@@ -10,7 +10,6 @@ function formatStackOverflowQuery(parameters){
 }
 
 function displayStackOverflowResults(responseJson) {
-  console.log(responseJson);
   $('#stackOverflow-results-list').empty();
   const stackOverflowResults = responseJson.items; 
   // iterate through the items array
@@ -40,7 +39,6 @@ function displayStackOverflowResults(responseJson) {
 function stackOverflowClickMore() {
   $('#stackOverflow-results-list').on('click', '.see-more', function(event) {
     let parentLi = $(this).closest('li');   // goes up to find closest <li>
-    // console.log('stackOverflow click more ran');
     parentLi.find('.body').removeClass('hide-body');    // finds body, displays it
     parentLi.find('.body-markdown').addClass('markdown-hide');    // hides truncated
     $(this).addClass('button-hide');  // hides button that was clicked
@@ -50,7 +48,6 @@ function stackOverflowClickMore() {
 function stackOverflowClickLess() {
   $('#stackOverflow-results-list').on('click', '.see-less', function(event) {
     let parentLi = $(this).closest('li');
-    // console.log('stackOverflow click less ran');
     parentLi.find('.body').addClass('hide-body');
     parentLi.find('.body-markdown').removeClass('markdown-hide');
     parentLi.find('.see-more').removeClass('button-hide');
@@ -67,7 +64,6 @@ function getStackOverflowQuestions(query) {
   };
   const stackOverflowQueryString = formatStackOverflowQuery(parameters);
   const stackOverflowURL = stackOverflowSearchURL + '?' + stackOverflowQueryString;
-  console.log(stackOverflowURL);
 
   fetch(stackOverflowURL)
     .then(response => {
@@ -93,7 +89,6 @@ function formatYouTubeQuery(parameters) {
   }
 
 function displayYouTubeResults(responseJson) {
-  console.log(responseJson);
   $('#youtube-results-list').empty();
   const youTubeResults = responseJson.items;
   // iterate through the items array
@@ -119,12 +114,10 @@ function getYouTubeVideos(query) {
     safeSearch: 'strict',
     type: 'video',
     videoCategoryId: '27', // educational
- // videoCategoryId: '28'  // tech and science -- currently unused
     videoEmbeddable: true  
   };
   const youTubeQueryString = formatYouTubeQuery(parameters);
   const youTubeURL = youTubeSearchURL + '?' + youTubeQueryString;
-  console.log(youTubeURL);
 
   fetch(youTubeURL)
     .then(response => {
@@ -140,7 +133,6 @@ function getYouTubeVideos(query) {
 }
 
 function watchForm() {
-    console.log('watchForm ran');
     $('form').submit(event =>  {
         event.preventDefault();
         const codeSearchTerm = $('#js-code-search').val();

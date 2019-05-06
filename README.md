@@ -2,7 +2,7 @@
 -------------------
 by [Peter](https://github.com/petertardif), [Lei](https://github.com/Jadedtofu) | [Live Demo Here](https://thinkful-nights-weekends-codename-camel.github.io/programmingFocus/)
 
-![Programming Focus search application screenshot]()
+![Programming Focus search application screenshot](https://raw.githubusercontent.com/thinkful-nights-weekends-codename-camel/programmingFocus/master/programming-focus.jpg)
 
 ## Application Summary
 
