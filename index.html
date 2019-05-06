@@ -15,23 +15,27 @@
         <h1 class="app-title">Programming Focus</h1>
         <h2 class="app-detail">We provide focused search results from Stack Overflow and portions of YouTube to aid your programming journey.  If your results are lacking, please use different keywords.</h2>
     </header>
-    <form action="" id="js-form">
-        <label id="search-top"for="code-search">Enter a programming language or concept:</label>
-        <input id="js-code-search" class="input-box-size" type="text" name="code-search" placeholder="for loop" required>
-        <input class="search-button" type="submit" value="Search">
+    <form role="form" action="" id="js-form">
+        <fieldset>
+            <label id="search-top"for="code-search">Enter a programming language or concept:</label>
+            <input id="js-code-search" class="input-box-size" type="text" name="code-search" placeholder="for loop" required>
+            <input class="search-button" type="submit" value="Search">
+        </fieldset>
     </form>
     
-    <p id="js-error-message" class="error-message"></p>
+    <section aria-label="error" aria-live="polite">
+        <p id="js-error-message" class="error-message"></p>
+    </section>
     <section class="js-hide results-container" aria-label="results">
-        <div class="stackoverflow-results">
+        <div role="region" aria-label="stack overflow results" class="stackoverflow-results">
             <h2><i class="fab fa-stack-overflow"></i> Stack Overflow:</h2>
-            <ul id="stackOverflow-results-list">
+            <ul id="stackOverflow-results-list" aria-live="polite">
             </ul>
         </div>
 
-        <div class="youtube-results">
+        <div role="region" aria-label="youtube results" class="youtube-results">
             <h2><i class="fab fa-youtube"></i> YouTube:</h2>
-            <ul id="youtube-results-list">
+            <ul id="youtube-results-list" aria-live="polite">
             </ul>
         </div>
     </section>

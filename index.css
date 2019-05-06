@@ -39,6 +39,10 @@ form {
     padding: 20px;
 }
 
+fieldset {
+    border: 0;
+}
+
 input.input-box-size {
     font-size: 1em;
     height: 40px;
