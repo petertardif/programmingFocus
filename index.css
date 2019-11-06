@@ -20,11 +20,27 @@ body {
     background-color: var(--body-background-color);
     font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
+    background-image: url('./assets/fabric_of_squares_gray.png');
 }
 
 .app-title {
     font-family: 'Roboto Slab', serif;
     margin-top: 40px;
+}
+
+nav {
+    background-color: var(--search-button-color);
+    color: var(--search-button-font-color);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 0px 4px black;
+    opacity: 0.75;
+  }
+
+.brand {
+    max-width: 100px;
+    padding: 10px 0; 
 }
 
 header {

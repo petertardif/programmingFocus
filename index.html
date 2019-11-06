@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <nav id="main-nav" role="banner">
+        <div class="container">
+          <img class="brand" src="./assets/icon-white-on-green.jpg">
+        </div>
+    </nav>
     <header role="banner">
         <h1 class="app-title">Programming Focus</h1>
         <h2 class="app-detail">We provide focused search results from Stack Overflow and portions of YouTube to aid your programming journey.  If your results are lacking, please use different keywords.</h2>
@@ -18,7 +23,7 @@
     <form role="form" action="" id="js-form">
         <fieldset>
             <label id="search-top"for="code-search">Enter a programming language or concept:</label>
-            <input id="js-code-search" class="input-box-size" type="text" name="code-search" placeholder="for loop" required>
+            <input id="js-code-search" class="input-box-size" type="text" name="code-search" placeholder="e.g., for loop" required>
             <input class="search-button" type="submit" value="Search">
         </fieldset>
     </form>
