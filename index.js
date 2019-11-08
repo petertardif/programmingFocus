@@ -79,7 +79,7 @@ function getStackOverflowQuestions(query) {
 }
 
 // youTube API:
-const youTubeAPIKey = 'AIzaSyDbpCSaGYZ33Us0xmx56Da15Z4YJvLPoqE';  // note: we understand this should not be here, but in order for the app to function...
+const youTubeAPIKey // note: we understand this should not be here, but in order for the app to function...
 const youTubeSearchURL = 'https://www.googleapis.com/youtube/v3/search';
 
 function formatYouTubeQuery(parameters) {
