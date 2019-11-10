@@ -1,4 +1,6 @@
 'use strict';
+// Youtubt API Key:
+// const YTAPI_Key = process.env.YouTube_API_Key;
 
 // StackOverflow API:
 const stackOverflowSearchURL = 'https://api.stackexchange.com/2.2/search';
@@ -79,7 +81,6 @@ function getStackOverflowQuestions(query) {
 }
 
 // youTube API:
-const youTubeAPIKey = 'AIzaSyDbpCSaGYZ33Us0xmx56Da15Z4YJvLPoqE';  // note: we understand this should not be here, but in order for the app to function...
 const youTubeSearchURL = 'https://www.googleapis.com/youtube/v3/search';
 
 function formatYouTubeQuery(parameters) {
@@ -105,7 +106,7 @@ function displayYouTubeResults(responseJson) {
 
 function getYouTubeVideos(query) {
   const parameters = {
-    key: youTubeAPIKey,
+    key: YTAPI_Key,
     maxResults: 6,
     order: 'Relevance',
     part: 'snippet',
